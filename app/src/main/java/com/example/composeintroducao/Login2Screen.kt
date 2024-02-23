@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -68,7 +69,11 @@ fun Login2Screen() {
                 modifier = Modifier
                     .padding(top = 24.dp)
                     .size(width = 200.dp, height = 50.dp),
-
+                    colors = ButtonDefaults.run { val buttonColors =
+                    buttonColors(Color(0xFFB16741))
+                    buttonColors
+                    }
+                
             ) {
                 Text("Entrar")
             }

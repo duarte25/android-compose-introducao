@@ -6,8 +6,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -30,18 +32,17 @@ fun Inicio() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Exibe a imagem em um componente Image
-            Image(
-                painter = painterResource(id = R.drawable.ifro_campus_vertical),
-                contentDescription = "Logo IFRO",
-                modifier = Modifier.size(150.dp)
-            )
-
-
-            Text("Não autenticado")
+            Text("Não autenticado", Modifier.padding(bottom = 20.dp))
             Button(
                 onClick = {
 
+                },
+                modifier = Modifier
+                    .padding(top = 15.dp)
+                    .size(width = 150.dp, height = 50.dp),
+                colors = ButtonDefaults.run { val buttonColors =
+                    buttonColors(Color(0xFFB16741))
+                    buttonColors
                 }
             ) {
                 Text("Minha conta")
