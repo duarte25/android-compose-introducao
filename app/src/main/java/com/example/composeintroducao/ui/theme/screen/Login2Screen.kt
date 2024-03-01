@@ -1,7 +1,5 @@
 package com.example.aplicacao1.ui.theme
 
-import com.example.composeintroducao.R
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,11 +25,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.composeintroducao.R
+import com.example.composeintroducao.viewmodel.AuthViewModel
 
 @Composable
-fun Login2Screen() {
+fun Login2Screen(
+    navController: NavController
+) {
+    var authViewModel = hiltViewModel<AuthViewModel>()
     var usuario by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
+    var error by remember { mutableStateOf("") }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -48,6 +55,10 @@ fun Login2Screen() {
                 modifier = Modifier.size(150.dp)
             )
 
+            if (error.isNotBlank()) {
+                Text(error)
+            }
+
             OutlinedTextField(
                 value = usuario,
                 onValueChange = { usuario = it},
@@ -62,7 +73,16 @@ fun Login2Screen() {
 
             Button(
                 onClick = {
-
+                   authViewModel.login(
+                       usuario,
+                       senha,
+                       onSuccess = {
+                           navController.navigate("minhaconta")
+                       },
+                       onError = { message ->
+                           error = message
+                       }
+                   )
                 },
                 shape = CircleShape,
                 contentPadding = PaddingValues(0.dp),
@@ -85,6 +105,6 @@ fun Login2Screen() {
 @Composable
 fun ILogin2ScreenPreview() {
     MaterialTheme {
-        Login2Screen()
+        Login2Screen(rememberNavController())
     }
 }

@@ -1,4 +1,4 @@
-package com.example.composeintroducao
+package com.example.composeintroducao.ui.theme.screen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,10 +26,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.composeintroducao.R
 
 @Composable
-fun Inicio() {
+fun MinhaConta(
+    navController: NavController
+) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color.LightGray
@@ -93,7 +97,7 @@ fun Inicio() {
 
             Button(
                 onClick = {
-
+                    navController.navigate("inicio")
                 },
                         colors = ButtonDefaults.run { val buttonColors =
                             buttonColors(Color(0xFFB16741))
@@ -109,11 +113,8 @@ fun Inicio() {
 
 @Preview
 @Composable
-fun InicioPreview(navController: NavHostController) {
-    MaterialTheme(
-
-    )
-    {
-        Inicio()
+fun MinhaContaPreview() {
+    MaterialTheme {
+        MinhaConta(rememberNavController())
     }
 }

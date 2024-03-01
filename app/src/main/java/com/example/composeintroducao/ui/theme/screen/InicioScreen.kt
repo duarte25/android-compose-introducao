@@ -1,8 +1,5 @@
 package com.example.aplicacao1.ui.theme
 
-import com.example.composeintroducao.R
-
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,12 +14,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun Inicio() {
+fun InicioScreen(
+    navController: NavController
+) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color.LightGray
@@ -35,7 +35,7 @@ fun Inicio() {
             Text("Não autenticado", Modifier.padding(bottom = 20.dp))
             Button(
                 onClick = {
-
+                    navController.navigate("login")
                 },
                 modifier = Modifier
                     .padding(top = 15.dp)
@@ -55,6 +55,6 @@ fun Inicio() {
 @Composable
 fun InicioPreview() {
     MaterialTheme {
-        Inicio()
+        InicioScreen(rememberNavController())
     }
 }
