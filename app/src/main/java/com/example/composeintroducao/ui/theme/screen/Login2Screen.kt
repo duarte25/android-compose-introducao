@@ -1,5 +1,6 @@
 package com.example.aplicacao1.ui.theme
 
+import LoadScreen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -97,6 +98,10 @@ fun Login2Screen(
             ) {
                 Text("Entrar")
             }
+        }
+
+        if (authViewModel.loading.value) {
+            LoadScreen()
         }
     }
 }

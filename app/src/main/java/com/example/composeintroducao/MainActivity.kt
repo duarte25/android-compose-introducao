@@ -23,13 +23,12 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "inicio") {
+
         composable("inicio") {
             InicioScreen(navController)
         }
@@ -41,6 +40,7 @@ fun Navigation() {
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

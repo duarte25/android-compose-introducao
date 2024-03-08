@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.composeintroducao.datastore.AppDataStore
 import com.example.composeintroducao.datastore.AppDataStoreKeys
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -13,7 +14,7 @@ class AuthViewModel @Inject constructor(
     private val appDataStore: AppDataStore
 ): ViewModel(){
     val autenticado = mutableStateOf(false)
-
+    val loading = mutableStateOf(false)
 
             fun login(
                 usuario: String,
@@ -31,7 +32,10 @@ class AuthViewModel @Inject constructor(
                     return
                 }
 
+                loading.value = true
+
                 viewModelScope.launch {
+                    delay(3000)
                     appDataStore.putBoolean(AppDataStoreKeys.AUTENTICADO, true).apply {
                         onSuccess()
                     }
