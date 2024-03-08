@@ -1,4 +1,4 @@
-package com.example.composeintroducao.ui.theme.screen
+package com.example.composeintroducao
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.aplicacao1.ui.theme.InicioScreen
 import com.example.aplicacao1.ui.theme.Login2Screen
+import com.example.composeintroducao.ui.theme.screen.MinhaConta
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
